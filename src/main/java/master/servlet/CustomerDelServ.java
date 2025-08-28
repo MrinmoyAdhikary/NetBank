@@ -28,9 +28,11 @@ public class CustomerDelServ extends HttpServlet {
 		cdto.setCid(cid);
 		CustomerDao cdao=new CustomerDao();
 		cdao.deleteData(cdto);
-		cdao.insertData(cdto);
-		   request.setAttribute("msg", "Customer deleted successfully!,CID:"+cid);
-	        
+		boolean  rs=cdao.updateData(cdto);
+		if(rs)
+		   request.setAttribute("msg", "Customer updated successfully!,CID:"+cid);
+		else
+			 request.setAttribute("msg", "Customer doesn't exist!,CID:"+cid);
 	        request.getRequestDispatcher("CustomerDetails.jsp").forward(request, response);
 	}
 
