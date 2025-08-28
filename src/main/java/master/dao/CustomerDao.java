@@ -37,7 +37,7 @@ public class CustomerDao {
 			se.printStackTrace();
 		}
 	}
-	public void updateData(CustomerDto cdto)
+	public boolean updateData(CustomerDto cdto)
 	{
 		try
 		{
@@ -48,7 +48,9 @@ public class CustomerDao {
 		 ps.setString(2,cdto.getCphno());
 		ps.setString(1,cdto.getCemail());
 		 ps.setString(3, cdto.getCid());  
-		 ps.executeUpdate();
+		int row= ps.executeUpdate();
+		if(row>0)
+			return true;
 		}
 		
 	
@@ -56,8 +58,9 @@ public class CustomerDao {
 		{
 			se.printStackTrace();
 		}
+		return false;
 	}
-	public void deleteData(CustomerDto cdto)
+	public boolean deleteData(CustomerDto cdto)
 	{
 		try
 		{
@@ -67,7 +70,9 @@ public class CustomerDao {
 			ps=cn.prepareStatement(delete_sql);
 		 ps.setString(1,cdto.getCid());
 		
-		 ps.executeUpdate();
+		int row= ps.executeUpdate();
+		if(row>0)
+			return true;
 		}
 		
 	
@@ -75,6 +80,7 @@ public class CustomerDao {
 		{
 			se.printStackTrace();
 		}
+		return false;
 	}
 
 }
