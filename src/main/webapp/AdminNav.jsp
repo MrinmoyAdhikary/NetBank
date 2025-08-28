@@ -23,6 +23,7 @@
 <div class="functions">
       <div class="inner1"><a href="CustomerMain.jsp">CUSTOMER</a></div>
       <div class="inner2"><a href="AccountMain.jsp">ACCOUNT</a></div>
+      <div class="inner3"><a href="ShowDetails.jsp">SHOW DETAILS</a></div>
 </div>
 </div>
 <div class="main">
