@@ -34,9 +34,11 @@ public class AccountUpdateServ extends HttpServlet {
 		adto.setAccno(accno);
 
 		AccountDao adao=new AccountDao();
-		adao.updateData(adto);
+		boolean rs=adao.updateData(adto);
+		if(rs)
 		request.setAttribute("msg", "Account updated successfully!,Account Number:"+accno);
-	       
+		else
+			request.setAttribute("msg", "Account doesn't exist!,Account Number:"+accno);
         request.getRequestDispatcher("AccountDetails.jsp").forward(request, response);
 	}
 
