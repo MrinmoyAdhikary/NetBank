@@ -33,9 +33,11 @@ public class CustomerUpdateServ extends HttpServlet {
 		cdto.setCphno(cphno);
 		cdto.setCemail(cemail);
 		CustomerDao cdao=new CustomerDao();
-		cdao.updateData(cdto);
+		boolean  rs=cdao.updateData(cdto);
+		if(rs)
 		   request.setAttribute("msg", "Customer updated successfully!,CID:"+cid);
-	        
+		else
+			 request.setAttribute("msg", "Customer doesn't exist!,CID:"+cid);
 	        request.getRequestDispatcher("CustomerDetails.jsp").forward(request, response);
 	}
 
