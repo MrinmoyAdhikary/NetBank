@@ -47,10 +47,11 @@ public class AccountAddServ extends HttpServlet {
 
 	        
 	        AccountDao dao = new AccountDao();
-	        dao.insertData(adto);
-	     
-
+	        boolean rs=dao.insertData(adto);
+	        if(rs)
             request.setAttribute("msg", "Account added successfully!,Account Number:"+accno);
+	        else
+	        	 request.setAttribute("msg", "Customer does not exist!,CID:"+cid);
 	       
 	        request.getRequestDispatcher("AccountDetails.jsp").forward(request, response);
 	}
